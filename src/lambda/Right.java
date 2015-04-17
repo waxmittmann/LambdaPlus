@@ -8,6 +8,7 @@
 
 package lambda;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -65,6 +66,16 @@ public class Right<S, T> extends Either<S, T> {
     @Override
     public boolean isLeft() {
         return false;
+    }
+
+    @Override
+    public Optional<S> getLeft() {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<T> getRight() {
+        return Optional.of(t);
     }
 
 }
