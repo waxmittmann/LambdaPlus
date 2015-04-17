@@ -40,6 +40,29 @@ public class EitherTest {
     }
 
     @Test
+    public void testFoldFoldsLeft() {
+        Either<Integer, Integer> leftEither = new Left(1);
+        Integer result = leftEither.fold(
+            (l) -> l+1,
+            (r) -> r+2
+        );
+
+        assertThat(result, is(2));
+    }
+
+    @Test
+    public void testFoldFoldsRight() {
+        Either<Integer, Integer> rightEither = new Right(1);
+
+        Integer result = rightEither.fold(
+                (l) -> l+1,
+                (r) -> r+2
+        );
+
+        assertThat(result, is(3));
+    }
+
+    @Test
     public void testMapLeftMapsLeft() {
         Either<Integer, Integer> leftEither = new Left(1);
 
@@ -135,6 +158,26 @@ public class EitherTest {
 
         assertThat(leftEither.isLeft(), is(true));
         assertThat(leftEither.getLeft().get(), is(1));
+    }
+
+    @Test
+    public void getOrDefaultShouldGetWhenRight() {
+        Either<Integer, Integer> rightEither = new Right<>(1);
+
+        Integer result = rightEither.getOrDefault(0, l -> {throw new RuntimeException("Should not be called");});
+
+        assertThat(result, is(1));
+    }
+
+    @Test
+    public void getOrDefaultShouldDefaultAndConsumeWhenLeft() {
+        Either<Integer, Integer> leftEither = new Left<>(1);
+
+        Store<Integer> store = new Store();
+        Integer result = leftEither.getOrDefault(0, l -> store.set(l));
+
+        assertThat(result, is(0));
+        assertThat(store.get(), is(1));
     }
 
 }
