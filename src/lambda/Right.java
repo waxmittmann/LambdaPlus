@@ -50,7 +50,7 @@ public class Right<S, T> extends Either<S, T> {
 
     @Override
     public <U> Either<U, T> flatMapLeft(Function<S, Either<U, T>> rightMap) {
-        return new Right(this);
+        return new Right(t);
     }
 
     @Override

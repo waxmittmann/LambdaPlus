@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a35d5c9-4953-44fe-a52b-0be3e63b7294" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/lambda/EitherTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/util/Store.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lambda/Either.java" afterPath="$PROJECT_DIR$/src/lambda/Either.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LambdaPlus.iml" afterPath="$PROJECT_DIR$/LambdaPlus.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lambda/Left.java" afterPath="$PROJECT_DIR$/src/lambda/Left.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/lambda/EitherTest.java" afterPath="$PROJECT_DIR$/test/lambda/EitherTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lambda/Right.java" afterPath="$PROJECT_DIR$/src/lambda/Right.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LambdaPlus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,9 +33,10 @@
       <file leaf-file-name="Left.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lambda/Left.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="915">
-              <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="915">
+              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
               <folding>
+                <element signature="e#1694#1695#0" expanded="true" />
                 <element signature="e#1731#1732#0" expanded="true" />
                 <element signature="e#1782#1783#0" expanded="true" />
                 <element signature="e#1821#1822#0" expanded="true" />
@@ -53,35 +48,35 @@
       <file leaf-file-name="Right.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lambda/Right.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="915">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="915">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="e#1274#1275#0" expanded="true" />
-                <element signature="e#1312#1313#0" expanded="true" />
-                <element signature="e#1672#1673#0" expanded="true" />
-                <element signature="e#1711#1712#0" expanded="true" />
-                <element signature="e#1762#1763#0" expanded="true" />
-                <element signature="e#1799#1800#0" expanded="true" />
+                <element signature="e#1309#1310#0" expanded="true" />
+                <element signature="e#1669#1670#0" expanded="true" />
+                <element signature="e#1708#1709#0" expanded="true" />
+                <element signature="e#1759#1760#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Either.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Either.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lambda/Either.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="510">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.42696628" vertical-offset="50" max-vertical-offset="495">
+              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EitherTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EitherTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/lambda/EitherTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9325843" vertical-offset="575" max-vertical-offset="1080">
-              <caret line="66" column="1" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1532" max-vertical-offset="2175">
+              <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,10 +103,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test/util/Store.java" />
+        <option value="$PROJECT_DIR$/src/lambda/Left.java" />
+        <option value="$PROJECT_DIR$/src/lambda/Either.java" />
         <option value="$PROJECT_DIR$/test/lambda/EitherTest.java" />
         <option value="$PROJECT_DIR$/src/lambda/Right.java" />
-        <option value="$PROJECT_DIR$/src/lambda/Either.java" />
-        <option value="$PROJECT_DIR$/src/lambda/Left.java" />
       </list>
     </option>
   </component>
@@ -586,12 +581,12 @@
       <created>1429269550648</created>
       <option name="number" value="Default" />
       <updated>1429269550648</updated>
-      <workItem from="1429269555537" duration="4138000" />
+      <workItem from="1429269555537" duration="5192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4138000" />
+    <option name="totallyTimeSpent" value="5192000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
@@ -612,7 +607,7 @@
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -661,34 +656,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lambda/Right.java">
+    <entry file="file://$PROJECT_DIR$/test/lambda/EitherTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="915">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1532" max-vertical-offset="2175">
+          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
           <folding>
-            <element signature="e#1274#1275#0" expanded="true" />
-            <element signature="e#1312#1313#0" expanded="true" />
-            <element signature="e#1672#1673#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#1762#1763#0" expanded="true" />
-            <element signature="e#1799#1800#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lambda/Either.java">
+    <entry file="file://$PROJECT_DIR$/src/lambda/Right.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="510">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="915">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#1274#1275#0" expanded="true" />
+            <element signature="e#1309#1310#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1708#1709#0" expanded="true" />
+            <element signature="e#1759#1760#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lambda/Left.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="915">
-          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="915">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
           <folding>
+            <element signature="e#1694#1695#0" expanded="true" />
             <element signature="e#1731#1732#0" expanded="true" />
             <element signature="e#1782#1783#0" expanded="true" />
             <element signature="e#1821#1822#0" expanded="true" />
@@ -696,13 +694,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lambda/EitherTest.java">
+    <entry file="file://$PROJECT_DIR$/src/lambda/Either.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9325843" vertical-offset="575" max-vertical-offset="1080">
-          <caret line="66" column="1" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.42696628" vertical-offset="50" max-vertical-offset="495">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

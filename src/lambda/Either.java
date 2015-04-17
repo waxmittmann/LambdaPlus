@@ -22,12 +22,11 @@ public abstract class Either<S, T> {
 
     public abstract <U> Either<S, U> flatMap(Function<S, Either<S, U>> leftMap, Function<T, Either<S, U>> rightMap);
 
-    public abstract <U> Either<U, T> mapLeft(Function<S, U> rightMap);
     public abstract <U> Either<U, T> flatMapLeft(Function<S, Either<U, T>> rightMap);
-
-    public abstract <U> Either<S, U> mapRight(Function<T, U> rightMap);
-
     public abstract <U> Either<S, U> flatMapRight(Function<T, Either<S, U>> rightMap);
+
+    public abstract <U> Either<U, T> mapLeft(Function<S, U> rightMap);
+    public abstract <U> Either<S, U> mapRight(Function<T, U> rightMap);
 
     public abstract T getOrDefault(T defaultVal, Consumer<S> leftConsumer);
 

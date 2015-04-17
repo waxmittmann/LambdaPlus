@@ -41,6 +41,30 @@ public class EitherTest {
 
     @Test
     public void testMapLeftMapsLeft() {
+        Either<Integer, Integer> leftEither = new Left(1);
+
+        leftEither = leftEither.mapLeft(
+                l -> l + 1
+        );
+
+        assertThat(leftEither.isLeft(), is(true));
+        assertThat(leftEither.getLeft().get(), is(2));
+    }
+
+    @Test
+    public void testMapRightMapsRight() {
+        Either<Integer, Integer> rightEither = new Right(1);
+
+        rightEither = rightEither.mapRight(
+            r -> r + 1
+        );
+
+        assertThat(rightEither.isLeft(), is(false));
+        assertThat(rightEither.getRight().get(), is(2));
+    }
+
+    @Test
+    public void testFlatMapFlatMapsLeft() {
         Either<Bi, Bi> leftEither = new Left(Bi.LEFT);
 
         leftEither = leftEither.flatMap(
@@ -53,7 +77,7 @@ public class EitherTest {
     }
 
     @Test
-    public void testMapRightMapsRight() {
+    public void testFlatMapFlatMapsRight() {
         Either<Bi, Bi> rightEither = new Right<>(Bi.RIGHT);
 
         rightEither = rightEither.flatMap(
@@ -64,4 +88,53 @@ public class EitherTest {
         assertThat(rightEither.isLeft(), is(false));
         assertThat(rightEither.getRight().get(), is(Bi.RIGHT));
     }
+
+    @Test
+    public void testFlatMapLeftFlatMapsLeft() {
+        Either<Integer, Integer> leftEither = new Left(1);
+
+        leftEither = leftEither.flatMapLeft(
+                (l) -> new Left(l + 1)
+        );
+
+        assertThat(leftEither.isLeft(), is(true));
+        assertThat(leftEither.getLeft().get(), is(2));
+    }
+
+    @Test
+    public void testFlatMapLeftFlatDoesNotFlatMapRight() {
+        Either<Integer, Integer> rightEither = new Right(1);
+
+        rightEither = rightEither.flatMapLeft(
+                (l) -> new Left(l+1)
+        );
+
+        assertThat(rightEither.isLeft(), is(false));
+        assertThat(rightEither.getRight().get(), is(1));
+    }
+
+    @Test
+    public void testFlatMapRightFlatMapsRight() {
+        Either<Integer, Integer> rightEither = new Right<>(1);
+
+        rightEither = rightEither.flatMapRight(
+                (r) -> new Right(r + 1)
+        );
+
+        assertThat(rightEither.isLeft(), is(false));
+        assertThat(rightEither.getRight().get(), is(2));
+    }
+
+    @Test
+    public void testFlatMapRightDoesNotFlatMapsLeft() {
+        Either<Integer, Integer> leftEither = new Left<>(1);
+
+        leftEither = leftEither.flatMapRight(
+                (r) -> new Right(r+1)
+        );
+
+        assertThat(leftEither.isLeft(), is(true));
+        assertThat(leftEither.getLeft().get(), is(1));
+    }
+
 }
