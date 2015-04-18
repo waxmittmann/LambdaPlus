@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="util.lambdaplus.lambda.util.LambdaUtilsTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-04-18T08:17:33" hostname="Maximilians-MacBook-Air-12.local" time="0.017">
+  <properties/>
+  <testcase name="shouldWrapFunctionConvertThrowableFunctionToFunctionThatWrapsExceptions" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.002"/>
+  <testcase name="shouldDoIt2" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.002"/>
+  <testcase name="shouldDoIt" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.001"/>
+  <testcase name="liftShouldProduceLeftWhenException" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.002"/>
+  <testcase name="shouldLiftExtractGetThrownExceptionDirectly" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.003"/>
+  <testcase name="shouldWrapFunctionConvertThrowableFunctionToFunctionThatProducesCorrectValue" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.001"/>
+  <testcase name="liftShouldProduceRightWhenNoException" classname="util.lambdaplus.lambda.util.LambdaUtilsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

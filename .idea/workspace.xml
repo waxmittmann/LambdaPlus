@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a35d5c9-4953-44fe-a52b-0be3e63b7294" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/either/Either.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/either/Left.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/either/Right.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/util/LambdaUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/util/ThrowableFunction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/util/ThrowableSupplier.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LambdaPlus/lambda/util/WrappedException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/either/EitherTest$Bi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/either/EitherTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/integration/StreamsWithExceptionUsingLift$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/integration/StreamsWithExceptionUsingLift$NegativeNumberException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/integration/StreamsWithExceptionUsingLift.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/util/CollectionUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/lambda/util/LambdaUtilsTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/util/CheckedTestException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/LambdaPlus/util/Store.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/either/Either.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/either/Either.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/either/Left.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/either/Left.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/either/Right.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/either/Right.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/util/LambdaUtils.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/util/LambdaUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/util/ThrowableFunction.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/util/ThrowableFunction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/util/ThrowableSupplier.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/util/ThrowableSupplier.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lambda/util/WrappedException.java" afterPath="$PROJECT_DIR$/src/util/lambdaplus/lambda/util/WrappedException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/lambda/either/EitherTest.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/either/EitherTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/lambda/integration/StreamsWithExceptionUsingLift.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/lambda/util/CollectionUtils.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CollectionUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/lambda/util/LambdaUtilsTest.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/util/LambdaUtilsTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/util/CheckedTestException.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CheckedTestException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/util/Store.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/util/Store.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java" afterPath="$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LambdaPlus.iws" />
@@ -69,14 +42,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LambdaUtilsTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LambdaUtilsTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/LambdaUtilsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38018432" vertical-offset="390" max-vertical-offset="1875">
-              <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
+            <state vertical-scroll-proportion="-5.0" vertical-offset="30" max-vertical-offset="1875">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+              <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,6 +84,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="EitherTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/either/EitherTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22113022" vertical-offset="1410" max-vertical-offset="2820">
+              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CollectionUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CollectionUtils.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -113,23 +108,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThrowableFunction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/lambdaplus/lambda/util/ThrowableFunction.java">
+      <file leaf-file-name="StreamsWithExceptionUsingLift.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
+              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StreamsWithExceptionUsingLift.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java">
+      <file leaf-file-name="Matchers.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/hamcrest-library-1.3.jar!/org/hamcrest/Matchers.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="1980">
-              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.44" vertical-offset="779" max-vertical-offset="5895">
+              <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
               <folding>
+                <element signature="e#0#17380#0" expanded="true" />
                 <element signature="imports" expanded="true" />
+                <element signature="e#13920#13921#0" expanded="true" />
+                <element signature="e#13976#13977#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,29 +143,6 @@
                 <element signature="e#478#479#0" expanded="true" />
                 <element signature="e#523#524#0" expanded="true" />
                 <element signature="e#558#559#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Left.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/lambdaplus/lambda/either/Left.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="855">
-              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Throwable.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/lang/Throwable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5597" max-vertical-offset="15555">
-              <caret line="413" column="34" selection-start-line="413" selection-start-column="34" selection-end-line="413" selection-end-column="34" />
-              <folding>
-                <element signature="e#17326#17327#0" expanded="true" />
-                <element signature="e#17377#17378#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -196,6 +171,9 @@
         <option value="$PROJECT_DIR$/test/lambda/integration/StreamsWithExceptionUsingLift.java" />
         <option value="$PROJECT_DIR$/test/lambda/util/LambdaUtilsTest.java" />
         <option value="$PROJECT_DIR$/test/util/lambdaplus/lambda/util/LambdaUtilsTest.java" />
+        <option value="$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/test/util/lambdaplus/lambda/either/EitherTest.java" />
       </list>
     </option>
   </component>
@@ -291,6 +269,32 @@
               <option name="myItemId" value="lambda" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LambdaPlus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LambdaPlus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lambda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="either" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -353,8 +357,8 @@
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.38947368" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
@@ -767,16 +771,16 @@
       <created>1429269550648</created>
       <option name="number" value="Default" />
       <updated>1429269550648</updated>
-      <workItem from="1429269555537" duration="13857000" />
+      <workItem from="1429269555537" duration="16813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13857000" />
+    <option name="totallyTimeSpent" value="16813000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -799,7 +803,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34468085" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -857,16 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/either/EitherTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2375" max-vertical-offset="2820">
-          <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/hamcrest-library-1.3.jar!/org/hamcrest/number/IsCloseTo.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.0" vertical-offset="95" max-vertical-offset="570">
@@ -899,8 +893,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5597" max-vertical-offset="15555">
           <caret line="413" column="34" selection-start-line="413" selection-start-column="34" selection-end-line="413" selection-end-column="34" />
           <folding>
-            <element signature="e#17326#17327#0" expanded="true" />
-            <element signature="e#17377#17378#0" expanded="true" />
+            <element signature="e#17326#17327#0" expanded="false" />
+            <element signature="e#17377#17378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -921,28 +915,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CollectionUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/lambdaplus/lambda/util/ThrowableSupplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CheckedTestException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -970,20 +946,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java">
+    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CheckedTestException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="1980">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/LambdaUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0" vertical-offset="30" max-vertical-offset="1875">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/LambdaUtilsTest.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/hamcrest-library-1.3.jar!/org/hamcrest/Matchers.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38018432" vertical-offset="390" max-vertical-offset="1875">
-          <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
+        <state vertical-scroll-proportion="-5.44" vertical-offset="779" max-vertical-offset="5895">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#17380#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#13920#13921#0" expanded="true" />
+            <element signature="e#13976#13977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/integration/StreamsWithExceptionUsingLift.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/util/CollectionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/util/lambdaplus/lambda/either/EitherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22113022" vertical-offset="1410" max-vertical-offset="2820">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -999,7 +1022,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.38947368" />
               </list>
             </option>
           </splitter-proportions>
@@ -1011,7 +1034,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.38947368" />
               </list>
             </option>
           </splitter-proportions>
@@ -1023,7 +1046,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.38947368" />
               </list>
             </option>
           </splitter-proportions>
@@ -1058,7 +1081,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.38947368" />
               </list>
             </option>
           </splitter-proportions>
