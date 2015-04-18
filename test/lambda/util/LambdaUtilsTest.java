@@ -18,7 +18,7 @@ public class LambdaUtilsTest {
         ThrowableSupplier<Integer> supplier = () -> {
             throw exception;};
 
-        Either<Exception, Integer> either = LambdaUtils.lift(supplier);
+        Either<Exception, Integer> either = LambdaUtils.runCatch(supplier);
 
         assertThat(either.getLeft().get(), is(exception));
     }
@@ -28,7 +28,7 @@ public class LambdaUtilsTest {
         final int val = 1;
         ThrowableSupplier<Integer> supplier = () -> val;
 
-        Either<Exception, Integer> either = LambdaUtils.lift(supplier);
+        Either<Exception, Integer> either = LambdaUtils.runCatch(supplier);
 
         assertThat(either.getRight().get(), is(1));
     }
@@ -41,7 +41,7 @@ public class LambdaUtilsTest {
             throw new WrappedException(checkedException);
         };
 
-        Either<Exception, Integer> either = LambdaUtils.liftExtract(supplier);
+        Either<Exception, Integer> either = LambdaUtils.runCatchWrapped(supplier);
 
         assertThat(either.isLeft(), is(true));
         assertThat(either.getLeft().get(), is(checkedException));
@@ -56,7 +56,7 @@ public class LambdaUtilsTest {
             else
                 throw checkedException;
         };
-        Function<Integer, Integer> function = LambdaUtils.wrapFunction(throwableFunction);
+        Function<Integer, Integer> function = LambdaUtils.wrapThrowable(throwableFunction);
 
         Integer result = function.apply(0);
 
@@ -72,7 +72,7 @@ public class LambdaUtilsTest {
             else
                 throw checkedException;
         };
-        Function<Integer, Integer> function = LambdaUtils.wrapFunction(throwableFunction);
+        Function<Integer, Integer> function = LambdaUtils.wrapThrowable(throwableFunction);
 
         try {
             function.apply(1);
@@ -81,5 +81,41 @@ public class LambdaUtilsTest {
         }
     }
 
+    //Todo: RENAME
+    @Test
+    public void shouldDoIt() {
+        final CheckedTestException checkedException = new CheckedTestException();
+        ThrowableFunction<Integer, Integer> throwableFunction = (in) -> {
+            if (in == 0)
+                return 1;
+            else
+                throw checkedException;
+        };
+        Function<Integer, Either<Exception, Integer>> eitherFunction = LambdaUtils.liftThrowable(
+                throwableFunction);
+
+        Either<Exception, Integer> result = eitherFunction.apply(0);
+
+        assertThat(result.isLeft(), is(false));
+        assertThat(result.getRight().get(), is(1));
+    }
+
+    @Test
+    public void shouldDoIt2() {
+        final CheckedTestException checkedException = new CheckedTestException();
+        ThrowableFunction<Integer, Integer> throwableFunction = (in) -> {
+            if (in == 0)
+                return 1;
+            else
+                throw checkedException;
+        };
+        Function<Integer, Either<Exception, Integer>> eitherFunction = LambdaUtils.liftThrowable(
+                throwableFunction);
+
+        Either<Exception, Integer> result = eitherFunction.apply(1);
+
+        assertThat(result.isLeft(), is(true));
+        assertThat(result.getLeft().get(), is(checkedException));
+    }
 
 }

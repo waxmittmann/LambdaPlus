@@ -12,9 +12,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static lambda.util.LambdaUtils.eitherFunction;
-import static lambda.util.LambdaUtils.lift;
-import static lambda.util.LambdaUtils.liftExtract;
+import static lambda.util.LambdaUtils.liftThrowable;
+import static lambda.util.LambdaUtils.runCatchWrapped;
 import static lambda.util.LambdaUtils.wrapError;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
@@ -44,7 +43,7 @@ public class StreamsWithExceptionUsingLift {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
         List<Either<Exception, Double>> result =
                 li.stream()
-                .map(nr -> lift(() -> sqrt(nr)))
+                .map(nr -> LambdaUtils.runCatch(() -> sqrt(nr)))
                 .collect(Collectors.toList());
         assertThat(result.get(0).getLeft().get(), is(negativeNumberException));
         assertThat(result.get(1).getRight().get(), closeTo(1.0, 0.002f));
@@ -62,7 +61,7 @@ public class StreamsWithExceptionUsingLift {
 
         //Todo: spy on sqrt to assert that it gets called only once
         Either<Exception, List<Double>> result =
-                lift(() -> li.stream()
+                LambdaUtils.runCatch(() -> li.stream()
                         .map(nr -> wrapError(() -> sqrt(nr)))
                         .collect(Collectors.toList()));
 
@@ -77,9 +76,9 @@ public class StreamsWithExceptionUsingLift {
 
         //Todo: spy on sqrt to assert that it gets called only once
         Either<Exception, List<Double>> result =
-                liftExtract(() -> li.stream()
-                    .map(nr -> wrapError(() -> sqrt(nr)))
-                    .collect(Collectors.toList()));
+                runCatchWrapped(() -> li.stream()
+                        .map(nr -> wrapError(() -> sqrt(nr)))
+                        .collect(Collectors.toList()));
 
         assertThat(result.getLeft().get(), is(negativeNumberException));
     }
@@ -90,9 +89,9 @@ public class StreamsWithExceptionUsingLift {
 
         //Todo: spy on sqrt to assert that it gets called three times
         Either<Exception, List<Double>> result =
-            lift(() -> li.stream()
-                .map(nr -> wrapError(() -> sqrt(nr)))
-                .collect(Collectors.toList()));
+            LambdaUtils.runCatch(() -> li.stream()
+                    .map(nr -> wrapError(() -> sqrt(nr)))
+                    .collect(Collectors.toList()));
 
         assertThat(result.getRight().get().size(), is(3));
         assertThat(result.getRight().get(), Matchers.contains(1.0, 1.0, 1.0));
@@ -102,10 +101,10 @@ public class StreamsWithExceptionUsingLift {
     public void shouldWrapFunctionWithLiftMapExceptionsAndValuesCorrectly() {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
         ThrowableFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
-        Function<Double, Double> wrappedSqrt = LambdaUtils.wrapFunction(throwableSqrt);
-        Function<Double, Either<Exception, Double>> eitheredSqrt = eitherFunction(wrappedSqrt);
+        Function<Double, Double> wrappedSqrt = LambdaUtils.wrapThrowable(throwableSqrt);
+        Function<Double, Either<Exception, Double>> liftedSqrt = LambdaUtils.liftWrapped(wrappedSqrt);
 
-        List<Either<Exception, Double>> result = li.stream().map(eitheredSqrt).collect(Collectors.toList());
+        List<Either<Exception, Double>> result = li.stream().map(liftedSqrt).collect(Collectors.toList());
 
         assertThat(result.get(0).getLeft().get(), is(negativeNumberException));
         assertThat(result.get(1).getRight().get(), closeTo(1.0, 0.002f));
@@ -117,9 +116,9 @@ public class StreamsWithExceptionUsingLift {
     public void shouldEitherFunctionDirectlyTakeThrowableFunction() {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
         ThrowableFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
-        Function<Double, Either<Exception, Double>> eitheredSqrt = eitherFunction(throwableSqrt);
+        Function<Double, Either<Exception, Double>> liftedSqrt = liftThrowable(throwableSqrt);
 
-        List<Either<Exception, Double>> result = li.stream().map(eitheredSqrt).collect(Collectors.toList());
+        List<Either<Exception, Double>> result = li.stream().map(liftedSqrt).collect(Collectors.toList());
 
         assertThat(result.get(0).getLeft().get(), is(negativeNumberException));
         assertThat(result.get(1).getRight().get(), closeTo(1.0, 0.002f));

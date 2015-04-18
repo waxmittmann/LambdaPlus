@@ -13,6 +13,14 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public abstract class Either<S, T> {
+    public <S, T> Either<S, T> left(S s) {
+        return new Left(s);
+    }
+
+    public <S, T> Either<S, T> right(T t) {
+        return new Right(t);
+    }
+
     public abstract Optional<S> getLeft();
     public abstract Optional<T> getRight();
 

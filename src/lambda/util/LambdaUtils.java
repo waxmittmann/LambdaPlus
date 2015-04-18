@@ -17,7 +17,15 @@ import java.util.function.Supplier;
 
 public class LambdaUtils {
 
-    public static <T> Either<Exception, T> lift(ThrowableSupplier<T> supplier) {
+    public static <T> T wrapError(ThrowableSupplier<T> supplier) {
+        try {
+            return supplier.get();
+        } catch (Exception e) {
+            throw new WrappedException(e);
+        }
+    }
+
+    public static <T> Either<Exception, T> runCatch(ThrowableSupplier<T> supplier) {
         try {
             return new Right(supplier.get());
         } catch (Exception e) {
@@ -25,7 +33,7 @@ public class LambdaUtils {
         }
     }
 
-    public static <T> Either<Exception, T> liftExtract(Supplier<T> supplier) {
+    public static <T> Either<Exception, T> runCatchWrapped(Supplier<T> supplier) {
         try {
             return new Right(supplier.get());
         } catch (WrappedException e) {
@@ -33,7 +41,7 @@ public class LambdaUtils {
         }
     }
 
-    public static <S, T> Function<S, T> wrapFunction(ThrowableFunction<S, T> function) {
+    public static <S, T> Function<S, T> wrapThrowable(ThrowableFunction<S, T> function) {
         return s -> {
             try {
                 return function.apply(s);
@@ -43,16 +51,7 @@ public class LambdaUtils {
         };
     }
 
-
-    public static <T> T wrapError(ThrowableSupplier<T> supplier) {
-        try {
-            return supplier.get();
-        } catch (Exception e) {
-            throw new WrappedException(e);
-        }
-    }
-
-    public static Function<Double, Either<Exception, Double>> eitherFunction(Function<Double, Double> wrappedFunction) {
+    public static <S, T> Function<S, Either<Exception, T>> liftWrapped(Function<S, T> wrappedFunction) {
         return v -> {
             try {
                 return new Right<>(wrappedFunction.apply(v));
@@ -62,14 +61,15 @@ public class LambdaUtils {
         };
     }
 
-    public static Function<Double, Either<Exception, Double>> eitherFunction(ThrowableFunction<Double, Double> throwableFunction) {
+    //first wraps the throwable func, then lifts the wrapped func
+    public static<S, T> Function<S, Either<Exception, T>> liftThrowable(
+            ThrowableFunction<S, T> throwableFunction) {
         return v -> {
             try {
-                return new Right<>(wrapFunction(throwableFunction).apply(v));
+                return new Right<>(wrapThrowable(throwableFunction).apply(v));
             } catch (WrappedException e) {
                 return new Left<>(e.getWrappedException());
             }
         };
     }
-
 }
