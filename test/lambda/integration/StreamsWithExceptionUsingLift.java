@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static lambda.util.LambdaUtils.eitherFunction;
 import static lambda.util.LambdaUtils.lift;
 import static lambda.util.LambdaUtils.liftExtract;
 import static lambda.util.LambdaUtils.wrapError;
@@ -102,7 +103,7 @@ public class StreamsWithExceptionUsingLift {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
         ThrowableFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
         Function<Double, Double> wrappedSqrt = LambdaUtils.wrapFunction(throwableSqrt);
-        Function<Double, Either<Exception, Double>> eitheredSqrt = LambdaUtils.eitherFunction(wrappedSqrt);
+        Function<Double, Either<Exception, Double>> eitheredSqrt = eitherFunction(wrappedSqrt);
 
         List<Either<Exception, Double>> result = li.stream().map(eitheredSqrt).collect(Collectors.toList());
 
@@ -116,7 +117,7 @@ public class StreamsWithExceptionUsingLift {
     public void shouldEitherFunctionDirectlyTakeThrowableFunction() {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
         ThrowableFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
-        Function<Double, Either<Exception, Double>> eitheredSqrt = LambdaUtils.eitherFunction(throwableSqrt);
+        Function<Double, Either<Exception, Double>> eitheredSqrt = eitherFunction(throwableSqrt);
 
         List<Either<Exception, Double>> result = li.stream().map(eitheredSqrt).collect(Collectors.toList());
 
