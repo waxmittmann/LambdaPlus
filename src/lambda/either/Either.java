@@ -6,7 +6,7 @@
  * Covata Limited or its affiliates.
  */
 
-package lambda;
+package lambda.either;
 
 import java.util.Optional;
 import java.util.function.Consumer;

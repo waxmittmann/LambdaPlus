@@ -1,4 +1,4 @@
-package lambda;
+package lambda.either;
 
 import org.junit.Test;
 import util.Store;
