@@ -29,4 +29,5 @@ public class LambdaUtilsTest {
         assertThat(either.getRight().get(), is(1));
     }
 
+    //Todo: Test the function lifting etc
 }
