@@ -40,4 +40,10 @@ public abstract class Either<S, T> {
 
     public abstract boolean isLeft();
 
+    public T getRightValueOrException() {
+        if (isLeft()) {
+            throw new RuntimeException("Cannot get from a Left");
+        }
+        return getRight().get();
+    }
 }
