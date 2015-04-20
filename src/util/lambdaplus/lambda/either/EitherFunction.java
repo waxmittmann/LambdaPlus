@@ -1,42 +1,77 @@
 package util.lambdaplus.lambda.either;
 
 import java.util.Objects;
-import java.util.function.Function;
 
 @FunctionalInterface
-public interface EitherFunction<T, R, L> {
+public interface EitherFunction<T, L, R> {
+
+    public static void main (String [] args) {
+        {
+            EitherFunction<Integer, Exception, String> combined
+                    = EitherFunction.<Integer, Exception>identity()
+                    .andThen((Integer nr) -> new Right<>(nr * 2))
+                    .andThen((Integer nr) -> new Right<>(nr + 2))
+                    .andThen((Integer nr) -> new Right<>("_" + nr + "_"));
+
+            combined.apply(5).consume(
+                    System.out::println,
+                    System.out::println
+            );
+        }
+
+        {
+            EitherFunction<Integer, Exception, String> combined
+                    = EitherFunction.<String, Exception>identity()
+                    .compose((String str) -> new Right<>(str.substring(3)))
+                    .compose((Integer nr) -> new Right<>("_" + nr + "_"))
+                    .compose((Integer nr) -> new Right<>(nr * 23348));
+
+            combined.apply(5).consume(
+                    System.out::println,
+                    System.out::println
+            );
+        }
+
+
+    }
 
     Either<L, R> apply(T t);
 
-    default <V> EitherFunction<T, V, L> andThen(EitherFunction<R, V, L> after) {
-        Objects.requireNonNull(after);
-        return (T t) -> {
-            Either<L, R> result = apply(t);
-            Function<R, Either<L, V>> rvFunction = (r) -> after.apply(r);
-            return result.flatMapRight(rvFunction);
+    default <V> EitherFunction<V, L, R> compose(EitherFunction<? super V, L, ? extends T> before) {
+        Objects.requireNonNull(before);
+        return (V v) -> {
+            Either<L, ? extends T> result = before.apply(v);
+            if (result.isLeft()) {
+                return new Left<>(result.getLeft().get());
+            } else {
+                return apply(result.getRightValueOrException());
+            }
         };
     }
 
-    static <L, R> Either<L, R> doInTurn(Object seed, EitherFunction<?, ?, L>... funcs) {
-        Objects.requireNonNull(seed);
-        Objects.requireNonNull(funcs);
+    /*
+        Used to be:
+        default <V> EitherFunction<T, L, ? extends V> andThen(EitherFunction<? super R, L, ? extends V> after) {
+        but then it won't compile because it wants Either<L, V> returned, not Either<L, ? extends V> for some reason...
 
-        Either<L, Object> cur = new Right<>(seed);
-
-        for(EitherFunction func : funcs) {
-            cur = func.apply(cur.getRightValueOrException());
-            if (cur.isLeft())
-                return (Either<L, R>) cur;
-        }
-        return (Either<L, R>) cur;
+        Used to be <T, L, ? extends V> but then will give error on comppilation because apparently it expects ? extends V
+        but is getting a V... not sure what that means.
+     */
+    default <V> EitherFunction<T, L, V> andThen(EitherFunction<? super R, L, V> after) {
+        Objects.requireNonNull(after);
+        return (T t) -> {
+            Either<L, R> result = apply(t);
+            if (result.isLeft()) {
+                return new Left<>(result.getLeft().get());
+            } else {
+                R rightValue = result.getRightValueOrException();
+                Either<L, V> finalResult = after.apply(rightValue);
+                return finalResult;
+            }
+        };
     }
 
-    static <L, R, S> Function<S, Either<L, R>> createDoInTurn(EitherFunction<?, ?, L>... funcs) {
-        Function<S, Either<L, R>> compositeFunc = (S s) -> doInTurn(s, funcs);
-        return compositeFunc;
-    }
-
-    static <T, R, L> EitherFunction<T, R, L> create(Function<T, Either<L, R>> func) {
-        return t -> func.apply(t);
+    static <T, L> EitherFunction<T, L, T> identity() {
+        return t -> new Right<>(t);
     }
 }
