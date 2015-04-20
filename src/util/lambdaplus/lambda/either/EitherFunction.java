@@ -4,37 +4,6 @@ import java.util.Objects;
 
 @FunctionalInterface
 public interface EitherFunction<T, L, R> {
-
-    public static void main (String [] args) {
-        {
-            EitherFunction<Integer, Exception, String> combined
-                    = EitherFunction.<Integer, Exception>identity()
-                    .andThen((Integer nr) -> new Right<>(nr * 2))
-                    .andThen((Integer nr) -> new Right<>(nr + 2))
-                    .andThen((Integer nr) -> new Right<>("_" + nr + "_"));
-
-            combined.apply(5).consume(
-                    System.out::println,
-                    System.out::println
-            );
-        }
-
-        {
-            EitherFunction<Integer, Exception, String> combined
-                    = EitherFunction.<String, Exception>identity()
-                    .compose((String str) -> new Right<>(str.substring(3)))
-                    .compose((Integer nr) -> new Right<>("_" + nr + "_"))
-                    .compose((Integer nr) -> new Right<>(nr * 23348));
-
-            combined.apply(5).consume(
-                    System.out::println,
-                    System.out::println
-            );
-        }
-
-
-    }
-
     Either<L, R> apply(T t);
 
     default <V> EitherFunction<V, L, R> compose(EitherFunction<? super V, L, ? extends T> before) {
