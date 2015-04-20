@@ -10,23 +10,38 @@ import java.util.Objects;
 public interface EitherFunction<T, L, R> {
 
     public static void main (String [] args) {
-        EitherFunction<Integer, Exception, Integer> rootFunc = EitherFunction.identity();
-        EitherFunction<Integer, Exception, String>  combined
-                = rootFunc.andThen((Integer nr) -> new Right<>(nr * 2))
-                .andThen((Integer nr) -> new Right<>(nr + 2))
-                .andThen((Integer nr) -> new Right<>("_" + nr + "_"));
+        {
+            EitherFunction<Integer, Exception, String> combined
+                    = EitherFunction.<Integer, Exception>identity()
+                    .andThen((Integer nr) -> new Right<>(nr * 2))
+                    .andThen((Integer nr) -> new Right<>(nr + 2))
+                    .andThen((Integer nr) -> new Right<>("_" + nr + "_"));
 
-        combined.apply(5).consume(
-            System.out::println,
-            System.out::println
-        );
+            combined.apply(5).consume(
+                    System.out::println,
+                    System.out::println
+            );
+        }
+
+        {
+            EitherFunction<Integer, Exception, String> combined
+                    = EitherFunction.<String, Exception>identity()
+                    .compose((String str) -> new Right<>(str.substring(3)))
+                    .compose((Integer nr) -> new Right<>("_" + nr + "_"))
+                    .compose((Integer nr) -> new Right<>(nr * 23348));
+
+            combined.apply(5).consume(
+                    System.out::println,
+                    System.out::println
+            );
+        }
+
 
     }
 
     Either<L, R> apply(T t);
 
     default <V> EitherFunction<V, L, R> compose(EitherFunction<? super V, L, ? extends T> before) {
-//    default <V> EitherFunction<V, L, R> compose(EitherFunction<? super V, L, ? extends T> before) {
         Objects.requireNonNull(before);
         return (V v) -> {
             Either<L, ? extends T> result = before.apply(v);
@@ -46,13 +61,12 @@ public interface EitherFunction<T, L, R> {
         Used to be <T, L, ? extends V> but then will give error on comppilation because apparently it expects ? extends V
         but is getting a V... not sure what that means.
      */
-//    default <V> EitherFunction<T, L, ? extends V> andThen(EitherFunction<? super R, L, V> after) {
     default <V> EitherFunction<T, L, V> andThen(EitherFunction<? super R, L, V> after) {
         Objects.requireNonNull(after);
         return (T t) -> {
             Either<L, R> result = apply(t);
             if (result.isLeft()) {
-                return new Left<L, V>(result.getLeft().get());
+                return new Left<>(result.getLeft().get());
             } else {
                 R rightValue = result.getRightValueOrException();
                 Either<L, V> finalResult = after.apply(rightValue);
