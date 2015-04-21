@@ -32,7 +32,7 @@ public class EitherFunctionTest {
     }
 
     @Test
-    public void testComposeCreatesWorkingRightToLeftChain() throws Exception {
+    public void testComposeReturnsLeftOnFailure() throws Exception {
         final Exception exception = new Exception("Bad");
         EitherFunction<Integer, Exception, String> combined
                 = EitherFunction.<String, Exception>identity()

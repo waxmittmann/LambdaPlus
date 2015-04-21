@@ -1,16 +1,14 @@
-package util.lambdaplus.lambda.util;
+package util.lambdaplus.lambda.either;
 
-import util.lambdaplus.lambda.either.Either;
-import util.lambdaplus.lambda.either.EitherFunction;
-import util.lambdaplus.lambda.either.Left;
+import util.lambdaplus.lambda.util.LambdaUtils;
+import util.lambdaplus.lambda.util.ThrowableFunction;
 
 import java.util.Objects;
 
+//Todo: Collapse into ThrowableFunction?
 @FunctionalInterface
-public interface ThrowableFunction<T, R> {
-    R apply(T t) throws Exception;
-
-    default <V> EitherFunction<V, Exception, R> compose(ThrowableFunction<? super V, ? extends T> before) {
+public interface LiftableFunction<T, R> extends ThrowableFunction<T, R> {
+    default <V> EitherFunction<V, Exception, R> compose(LiftableFunction<? super V, ? extends T> before) {
         Objects.requireNonNull(before);
         return (V v) -> {
             Either<Exception, ? extends T> result = LambdaUtils.liftThrowable(before).apply(v);
@@ -22,7 +20,7 @@ public interface ThrowableFunction<T, R> {
         };
     }
 
-    default <V> EitherFunction<T, Exception, V> andThen(ThrowableFunction<? super R, V> after) {
+    default <V> EitherFunction<T, Exception, V> andThen(LiftableFunction<? super R, V> after) {
         Objects.requireNonNull(after);
         return (T t) -> {
             Either<Exception, R> result = LambdaUtils.liftThrowable(this).apply(t);
@@ -36,7 +34,7 @@ public interface ThrowableFunction<T, R> {
         };
     }
 
-    static <V> ThrowableFunction<V, V> identity() {
-        return v -> v;
+    static <T> LiftableFunction<T, T> identity() {
+        return (T t) -> t;
     }
 }
