@@ -7,7 +7,7 @@ import java.util.Objects;
 
 //Todo: Collapse into ThrowableFunction?
 @FunctionalInterface
-public interface LiftableFunction<T, R> extends ThrowableFunction<T, R> {
+public interface LiftableFunction<T, R> {
     default <V> EitherFunction<V, Exception, R> compose(LiftableFunction<? super V, ? extends T> before) {
         Objects.requireNonNull(before);
         return (V v) -> {
