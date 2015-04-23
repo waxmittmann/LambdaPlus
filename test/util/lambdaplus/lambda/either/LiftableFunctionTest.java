@@ -1,43 +1,79 @@
 package util.lambdaplus.lambda.either;
 
 import org.junit.Test;
-import util.lambdaplus.lambda.util.ThrowableFunction;
 
-import static junit.framework.TestCase.fail;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class LiftableFunctionTest {
 
     @Test
-    public void shouldComposeWorkSameAsEitherFunctionWhenNoErrors() throws Exception {
-        final Exception exception = new Exception("Bad");
-//        EitherFunction<Integer, Exception, Integer> combined
-//                = LiftableFunction.<Integer>identity().compose((Integer nr)-> nr * 2);
+    public void testApplyAppliesWrappedFunction() throws Exception {
+        LiftableFunction<Integer, Integer> liftableFunc
+                = new LiftableFunction<>((Integer a) -> a + 1);
 
-        EitherFunction<Integer, Exception, Integer> combined = ThrowableFunction.<Integer>identity()
-                .andThen((Integer nr) -> (nr * 2));
-        EitherFunction<Integer, Exception, Integer> combined2 = combined.andThen((Integer nr) -> (nr + 2));
+        Integer result = liftableFunc.apply(1).getRight().get();
 
-        EitherFunction<Integer, Exception, String> combined
-                = ThrowableFunction.<Integer>identity()
-                .andThen((Integer nr) -> (nr * 2)) // (1) 5 * 2 = 10
-                .andThen((Integer nr) -> (nr + 2)) // (2) 10 + 2 = 12
-                .andThen((Integer nr) -> ("_" + nr + "_")); // (3) _12_
-
-        combined.apply(5).consume(
-                e -> fail("Exception thrown"), r -> assertThat(r, is("_12_"))
-        );
-
+        assertThat(result, is(2));
     }
-//
-//    @Test
-//    public void testAndThen() throws Exception {
-//
-//    }
-//
-//    @Test
-//    public void testIdentity() throws Exception {
-//
-//    }
+
+    @Test
+    public void testAndThenChainsCorrectly() throws Exception {
+        LiftableFunction<Integer, String> liftableFunc
+                = new LiftableFunction<>((Integer a) -> a + 1)
+                    .andThen((Integer b) -> b * 2)
+                    .andThen((Integer b) -> "_" + b + "_");
+
+        String result = liftableFunc.apply(1).getRight().get();
+
+        assertThat(result, is("_4_"));
+    }
+
+    @Test
+    public void testAndThenFailsCorrectly() throws Exception {
+        final Exception expectedException = new Exception("Bad");
+        LiftableFunction<Integer, String> liftableFunc
+                = new LiftableFunction<>((Integer a) -> a + 1)
+                .andThen((Integer b) -> {
+                    if (true) {
+                        throw expectedException;
+                    }
+                    return b * 2;
+                })
+                .andThen((Integer b) -> "_" + b + "_");
+
+        Exception result = liftableFunc.apply(1).getLeft().get();
+
+        assertThat(result, is(expectedException));
+    }
+
+    @Test
+    public void testComposeChainsCorrectly() throws Exception {
+        LiftableFunction<Integer, String> liftableFunc
+                = new LiftableFunction<>((Integer a) -> "_" + a + "_")
+                .compose((Integer b) -> b * 2)
+                .compose((Integer b) -> b + 1);
+
+        String result = liftableFunc.apply(1).getRight().get();
+
+        assertThat(result, is("_4_"));
+    }
+
+    @Test
+    public void testComposeFailsCorrectly() throws Exception {
+        final Exception exception = new Exception("Bad!");
+        LiftableFunction<Integer, String> liftableFunc
+                = new LiftableFunction<>((Integer a) -> "_" + a + "_")
+                .compose((Integer b) -> {
+                    if (true) {
+                        throw exception;
+                    }
+                    return b * 2;
+                })
+                .compose((Integer b) -> b + 1);
+
+        Exception result = liftableFunc.apply(1).getLeft().get();
+
+        assertThat(result, is(exception));
+    }
 }

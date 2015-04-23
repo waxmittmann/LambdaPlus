@@ -1,40 +1,58 @@
 package util.lambdaplus.lambda.either;
 
-import util.lambdaplus.lambda.util.LambdaUtils;
 import util.lambdaplus.lambda.util.ThrowableFunction;
 
-import java.util.Objects;
+public class LiftableFunction<R1, R2> {
 
-//Todo: Collapse into ThrowableFunction?
-@FunctionalInterface
-public interface LiftableFunction<T, R> {
-    default <V> EitherFunction<V, Exception, R> compose(LiftableFunction<? super V, ? extends T> before) {
-        Objects.requireNonNull(before);
-        return (V v) -> {
-            Either<Exception, ? extends T> result = LambdaUtils.liftThrowable(before).apply(v);
-            if (result.isLeft()) {
-                return new Left<Exception, R>(result.getLeft().get());
-            } else {
-                return LambdaUtils.liftThrowable(this).apply(result.getRightValueOrException());
+    EitherFunction<R1, Exception, R2>  thisFunc;
+
+    public LiftableFunction(ThrowableFunction<R1, R2> throwableFunc) {
+        thisFunc = (R1 r1) -> {
+            try {
+                return new Right<>(throwableFunc.apply(r1));
+            } catch (Exception e) {
+                return new Left<>(e);
             }
         };
     }
 
-    default <V> EitherFunction<T, Exception, V> andThen(LiftableFunction<? super R, V> after) {
-        Objects.requireNonNull(after);
-        return (T t) -> {
-            Either<Exception, R> result = LambdaUtils.liftThrowable(this).apply(t);
-            if (result.isLeft()) {
-                return new Left<>(result.getLeft().get());
-            } else {
-                R rightValue = result.getRightValueOrException();
-                Either<Exception, V> finalResult = LambdaUtils.liftThrowable(after).apply(rightValue);
-                return finalResult;
-            }
-        };
+    public LiftableFunction(EitherFunction<R1, Exception, R2> thisFunc) {
+        this.thisFunc = thisFunc;
     }
 
-    static <T> LiftableFunction<T, T> identity() {
-        return (T t) -> t;
+    public Either<Exception, R2> apply(R1 r1) {
+        return thisFunc.apply(r1);
+    }
+
+    public <R3> LiftableFunction<R1, R3> andThen(ThrowableFunction<R2, R3> next) {
+        return new LiftableFunction<>(
+            (R1 r1) -> {
+                try {
+                    Either<Exception, R2> result = thisFunc.apply(r1);
+                    if (result.isLeft()) {
+                        return new Left<>(result.getLeft().get());
+                    } else {
+                        return new Right<>(next.apply(result.getRight().get()));
+                    }
+                } catch (Exception e) {
+                    return new Left<>(e);
+                }
+            });
+    }
+
+    public <R3> LiftableFunction<R3, R2> compose(ThrowableFunction<R3, R1> next) {
+        return new LiftableFunction<>(
+            (R3 r3) -> {
+                try {
+                    Either<Exception, R1> result = new Right(next.apply(r3));
+                    if (result.isLeft()) {
+                        return new Left<>(result.getLeft().get());
+                    } else {
+                        return apply(result.getRight().get());
+                    }
+                } catch (Exception e) {
+                    return new Left<>(e);
+                }
+            });
     }
 }
