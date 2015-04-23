@@ -5,12 +5,12 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class LiftableFunctionTest {
+public class LiftingFunctionTest {
 
     @Test
     public void testApplyAppliesWrappedFunction() throws Exception {
-        LiftableFunction<Integer, Integer> liftableFunc
-                = new LiftableFunction<>((Integer a) -> a + 1);
+        LiftingFunction<Integer, Integer> liftableFunc
+                = new LiftingFunction<>((Integer a) -> a + 1);
 
         Integer result = liftableFunc.apply(1).getRight().get();
 
@@ -19,8 +19,8 @@ public class LiftableFunctionTest {
 
     @Test
     public void testAndThenChainsCorrectly() throws Exception {
-        LiftableFunction<Integer, String> liftableFunc
-                = new LiftableFunction<>((Integer a) -> a + 1)
+        LiftingFunction<Integer, String> liftableFunc
+                = new LiftingFunction<>((Integer a) -> a + 1)
                     .andThen((Integer b) -> b * 2)
                     .andThen((Integer b) -> "_" + b + "_");
 
@@ -32,8 +32,8 @@ public class LiftableFunctionTest {
     @Test
     public void testAndThenFailsCorrectly() throws Exception {
         final Exception expectedException = new Exception("Bad");
-        LiftableFunction<Integer, String> liftableFunc
-                = new LiftableFunction<>((Integer a) -> a + 1)
+        LiftingFunction<Integer, String> liftableFunc
+                = new LiftingFunction<>((Integer a) -> a + 1)
                 .andThen((Integer b) -> {
                     if (true) {
                         throw expectedException;
@@ -49,8 +49,8 @@ public class LiftableFunctionTest {
 
     @Test
     public void testComposeChainsCorrectly() throws Exception {
-        LiftableFunction<Integer, String> liftableFunc
-                = new LiftableFunction<>((Integer a) -> "_" + a + "_")
+        LiftingFunction<Integer, String> liftableFunc
+                = new LiftingFunction<>((Integer a) -> "_" + a + "_")
                 .compose((Integer b) -> b * 2)
                 .compose((Integer b) -> b + 1);
 
@@ -62,8 +62,8 @@ public class LiftableFunctionTest {
     @Test
     public void testComposeFailsCorrectly() throws Exception {
         final Exception exception = new Exception("Bad!");
-        LiftableFunction<Integer, String> liftableFunc
-                = new LiftableFunction<>((Integer a) -> "_" + a + "_")
+        LiftingFunction<Integer, String> liftableFunc
+                = new LiftingFunction<>((Integer a) -> "_" + a + "_")
                 .compose((Integer b) -> {
                     if (true) {
                         throw exception;
