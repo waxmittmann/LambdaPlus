@@ -1,9 +1,10 @@
 package util.lambdaplus.lambda.either;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 @FunctionalInterface
-public interface EitherFunction<T, L, R> {
+public interface EitherFunction<T, L, R> extends Function<T, Either<L, R>> {
     Either<L, R> apply(T t);
 
     default <V> EitherFunction<V, L, R> compose(EitherFunction<? super V, L, ? extends T> before) {

@@ -14,7 +14,7 @@ public class LambdaUtilsTest {
     @Test
     public void liftShouldProduceLeftWhenException() throws Exception {
         final Exception exception = new Exception("Bad");
-        ThrowableSupplier<Integer> supplier = () -> {
+        ThrowingSupplier<Integer> supplier = () -> {
             throw exception;};
 
         Either<Exception, Integer> either = LambdaUtils.runCatch(supplier);
@@ -25,7 +25,7 @@ public class LambdaUtilsTest {
     @Test
     public void liftShouldProduceRightWhenNoException() throws Exception {
         final int val = 1;
-        ThrowableSupplier<Integer> supplier = () -> val;
+        ThrowingSupplier<Integer> supplier = () -> val;
 
         Either<Exception, Integer> either = LambdaUtils.runCatch(supplier);
 
@@ -49,13 +49,13 @@ public class LambdaUtilsTest {
     @Test
     public void shouldWrapFunctionConvertThrowableFunctionToFunctionThatProducesCorrectValue() {
         final CheckedTestException checkedException = new CheckedTestException();
-        ThrowableFunction<Integer, Integer> throwableFunction = (in) -> {
+        ThrowingFunction<Integer, Integer> throwingFunction = (in) -> {
             if (in == 0)
                 return 1;
             else
                 throw checkedException;
         };
-        Function<Integer, Integer> function = LambdaUtils.wrapThrowable(throwableFunction);
+        Function<Integer, Integer> function = LambdaUtils.wrapThrowable(throwingFunction);
 
         Integer result = function.apply(0);
 
@@ -65,13 +65,13 @@ public class LambdaUtilsTest {
     @Test
     public void shouldWrapFunctionConvertThrowableFunctionToFunctionThatWrapsExceptions() {
         final CheckedTestException checkedException = new CheckedTestException();
-        ThrowableFunction<Integer, Integer> throwableFunction = (in) -> {
+        ThrowingFunction<Integer, Integer> throwingFunction = (in) -> {
             if (in == 0)
                 return 1;
             else
                 throw checkedException;
         };
-        Function<Integer, Integer> function = LambdaUtils.wrapThrowable(throwableFunction);
+        Function<Integer, Integer> function = LambdaUtils.wrapThrowable(throwingFunction);
 
         try {
             function.apply(1);
@@ -84,14 +84,14 @@ public class LambdaUtilsTest {
     @Test
     public void shouldDoIt() {
         final CheckedTestException checkedException = new CheckedTestException();
-        ThrowableFunction<Integer, Integer> throwableFunction = (in) -> {
+        ThrowingFunction<Integer, Integer> throwingFunction = (in) -> {
             if (in == 0)
                 return 1;
             else
                 throw checkedException;
         };
         Function<Integer, Either<Exception, Integer>> eitherFunction = LambdaUtils.liftThrowable(
-                throwableFunction);
+                throwingFunction);
 
         Either<Exception, Integer> result = eitherFunction.apply(0);
 
@@ -102,14 +102,14 @@ public class LambdaUtilsTest {
     @Test
     public void shouldDoIt2() {
         final CheckedTestException checkedException = new CheckedTestException();
-        ThrowableFunction<Integer, Integer> throwableFunction = (in) -> {
+        ThrowingFunction<Integer, Integer> throwingFunction = (in) -> {
             if (in == 0)
                 return 1;
             else
                 throw checkedException;
         };
         Function<Integer, Either<Exception, Integer>> eitherFunction = LambdaUtils.liftThrowable(
-                throwableFunction);
+                throwingFunction);
 
         Either<Exception, Integer> result = eitherFunction.apply(1);
 

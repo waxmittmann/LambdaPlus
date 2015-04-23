@@ -6,11 +6,12 @@ import util.lambdaplus.lambda.either.Left;
 
 import java.util.Objects;
 
+//ThrowingFunction can't extend Function (because it throws Exception) but both EitherFunction and LiftingFunction can
 @FunctionalInterface
-public interface ThrowableFunction<T, R> {
+public interface ThrowingFunction<T, R> {
     R apply(T t) throws Exception;
 
-    default <V> EitherFunction<V, Exception, R> compose(ThrowableFunction<? super V, ? extends T> before) {
+    default <V> EitherFunction<V, Exception, R> compose(ThrowingFunction<? super V, ? extends T> before) {
         Objects.requireNonNull(before);
         return (V v) -> {
             Either<Exception, ? extends T> result = LambdaUtils.liftThrowable(before).apply(v);
@@ -22,7 +23,7 @@ public interface ThrowableFunction<T, R> {
         };
     }
 
-    default <V> EitherFunction<T, Exception, V> andThen(ThrowableFunction<? super R, V> after) {
+    default <V> EitherFunction<T, Exception, V> andThen(ThrowingFunction<? super R, V> after) {
         Objects.requireNonNull(after);
         return (T t) -> {
             Either<Exception, R> result = LambdaUtils.liftThrowable(this).apply(t);
@@ -36,7 +37,7 @@ public interface ThrowableFunction<T, R> {
         };
     }
 
-    static <V> ThrowableFunction<V, V> identity() {
+    static <V> ThrowingFunction<V, V> identity() {
         return v -> v;
     }
 }

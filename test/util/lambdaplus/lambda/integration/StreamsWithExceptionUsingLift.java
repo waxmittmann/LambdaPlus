@@ -3,7 +3,7 @@ package util.lambdaplus.lambda.integration;
 import util.lambdaplus.lambda.either.Either;
 import util.lambdaplus.lambda.util.CollectionUtils;
 import util.lambdaplus.lambda.util.LambdaUtils;
-import util.lambdaplus.lambda.util.ThrowableFunction;
+import util.lambdaplus.lambda.util.ThrowingFunction;
 import util.lambdaplus.lambda.util.WrappedException;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -97,7 +97,7 @@ public class StreamsWithExceptionUsingLift {
     @Test
     public void shouldWrapFunctionWithLiftMapExceptionsAndValuesCorrectly() {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
-        ThrowableFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
+        ThrowingFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
         Function<Double, Double> wrappedSqrt = LambdaUtils.wrapThrowable(throwableSqrt);
         Function<Double, Either<Exception, Double>> liftedSqrt = LambdaUtils.liftWrapped(wrappedSqrt);
 
@@ -112,7 +112,7 @@ public class StreamsWithExceptionUsingLift {
     @Test
     public void shouldEitherFunctionDirectlyTakeThrowableFunction() {
         List<Double> li = CollectionUtils.list(-1.0, 1.0, 2.0, -3.0);
-        ThrowableFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
+        ThrowingFunction<Double, Double> throwableSqrt = StreamsWithExceptionUsingLift::sqrt;
         Function<Double, Either<Exception, Double>> liftedSqrt = LambdaUtils.liftThrowable(throwableSqrt);
 
         List<Either<Exception, Double>> result = li.stream().map(liftedSqrt).collect(Collectors.toList());

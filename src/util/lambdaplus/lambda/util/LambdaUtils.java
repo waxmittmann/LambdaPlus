@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 
 public class LambdaUtils {
 
-    public static <T> T wrapError(ThrowableSupplier<T> supplier) {
+    public static <T> T wrapError(ThrowingSupplier<T> supplier) {
         try {
             return supplier.get();
         } catch (Exception e) {
@@ -25,7 +25,7 @@ public class LambdaUtils {
         }
     }
 
-    public static <T> Either<Exception, T> runCatch(ThrowableSupplier<T> supplier) {
+    public static <T> Either<Exception, T> runCatch(ThrowingSupplier<T> supplier) {
         try {
             return new Right(supplier.get());
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class LambdaUtils {
         }
     }
 
-    public static <S, T> Function<S, T> wrapThrowable(ThrowableFunction<S, T> function) {
+    public static <S, T> Function<S, T> wrapThrowable(ThrowingFunction<S, T> function) {
         return s -> {
             try {
                 return function.apply(s);
@@ -63,10 +63,10 @@ public class LambdaUtils {
 
     //first wraps the throwable func, then lifts the wrapped func
     public static<S, T> Function<S, Either<Exception, T>> liftThrowable(
-            ThrowableFunction<S, T> throwableFunction) {
+            ThrowingFunction<S, T> throwingFunction) {
         return v -> {
             try {
-                return new Right<>(wrapThrowable(throwableFunction).apply(v));
+                return new Right<>(wrapThrowable(throwingFunction).apply(v));
             } catch (WrappedException e) {
                 return new Left<>(e.getWrappedException());
             }

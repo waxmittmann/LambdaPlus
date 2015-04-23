@@ -9,6 +9,6 @@
 package util.lambdaplus.lambda.util;
 
 @FunctionalInterface
-public interface ThrowableSupplier<S> {
+public interface ThrowingSupplier<S> {
     S get() throws Exception;
 }
