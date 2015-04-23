@@ -4,7 +4,7 @@ import util.lambdaplus.lambda.util.ThrowableFunction;
 
 import static util.lambdaplus.lambda.util.LambdaUtils.liftThrowable;
 
-public class LiftingFunction<R1, R2> implements EitherFunction<R1, Exception,R2>{
+public class LiftingFunction<R1, R2> implements EitherFunction<R1, Exception, R2>{
 
     EitherFunction<R1, Exception, R2>  thisFunc;
 
