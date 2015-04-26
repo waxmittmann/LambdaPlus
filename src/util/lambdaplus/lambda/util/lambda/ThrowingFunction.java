@@ -1,4 +1,4 @@
-package util.lambdaplus.lambda.util;
+package util.lambdaplus.lambda.util.lambda;
 
 import util.lambdaplus.lambda.either.Either;
 import util.lambdaplus.lambda.either.EitherFunction;

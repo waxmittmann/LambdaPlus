@@ -2,9 +2,9 @@ package util.lambdaplus.lambda.integration;
 
 import util.lambdaplus.lambda.either.Either;
 import util.lambdaplus.lambda.util.CollectionUtils;
-import util.lambdaplus.lambda.util.LambdaUtils;
-import util.lambdaplus.lambda.util.ThrowingFunction;
-import util.lambdaplus.lambda.util.WrappedException;
+import util.lambdaplus.lambda.util.lambda.LambdaUtils;
+import util.lambdaplus.lambda.util.lambda.ThrowingFunction;
+import util.lambdaplus.lambda.util.lambda.WrappedException;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 

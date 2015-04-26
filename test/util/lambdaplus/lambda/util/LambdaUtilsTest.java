@@ -2,6 +2,10 @@ package util.lambdaplus.lambda.util;
 
 import util.lambdaplus.lambda.either.Either;
 import org.junit.Test;
+import util.lambdaplus.lambda.util.lambda.LambdaUtils;
+import util.lambdaplus.lambda.util.lambda.ThrowingFunction;
+import util.lambdaplus.lambda.util.lambda.ThrowingSupplier;
+import util.lambdaplus.lambda.util.lambda.WrappedException;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

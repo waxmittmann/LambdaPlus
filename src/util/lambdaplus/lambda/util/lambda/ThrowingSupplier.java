@@ -6,7 +6,7 @@
  * Covata Limited or its affiliates.
  */
 
-package util.lambdaplus.lambda.util;
+package util.lambdaplus.lambda.util.lambda;
 
 @FunctionalInterface
 public interface ThrowingSupplier<S> {

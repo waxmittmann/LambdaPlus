@@ -1,4 +1,4 @@
-package util.lambdaplus.lambda.util;
+package util.lambdaplus.lambda.util.lambda;
 
 public class WrappedException extends RuntimeException {
     private final Exception e;

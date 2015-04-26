@@ -1,8 +1,8 @@
 package util.lambdaplus.lambda.either;
 
-import util.lambdaplus.lambda.util.ThrowingFunction;
+import util.lambdaplus.lambda.util.lambda.ThrowingFunction;
 
-import static util.lambdaplus.lambda.util.LambdaUtils.liftThrowable;
+import static util.lambdaplus.lambda.util.lambda.LambdaUtils.liftThrowable;
 
 public class LiftingFunction<R1, R2> implements EitherFunction<R1, Exception, R2>{
 

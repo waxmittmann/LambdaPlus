@@ -4,7 +4,7 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import util.lambdaplus.lambda.either.Either;
 import util.lambdaplus.lambda.either.EitherFunction;
-import util.lambdaplus.lambda.util.LambdaUtils;
+import util.lambdaplus.lambda.util.lambda.LambdaUtils;
 
 import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertThat;
