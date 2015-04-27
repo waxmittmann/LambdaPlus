@@ -6,8 +6,8 @@ import util.lambdaplus.lambda.either.Either;
 import util.lambdaplus.lambda.either.EitherFunction;
 import util.lambdaplus.lambda.util.lambda.LambdaUtils;
 
-import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class EitherFunctionWithLift {
 
@@ -16,9 +16,9 @@ public class EitherFunctionWithLift {
     public void testEitherFunctionWithLiftWillCatchExceptionAsEither() {
         EitherFunction<Integer, Exception, String> func =
             EitherFunction.<Integer, Exception>identity()
-                .andThen(nr -> LambdaUtils.runCatch(() -> nr + 5))
-                .andThen(nr -> LambdaUtils.runCatch(() -> 10 / nr))
-                    .andThen(nr -> LambdaUtils.runCatch(() -> "_" + nr + "_"));
+                .andThen2(nr -> LambdaUtils.runCatch(() -> nr + 5))
+                .andThen2(nr -> LambdaUtils.runCatch(() -> 10 / nr))
+                    .andThen2(nr -> LambdaUtils.runCatch(() -> "_" + nr + "_"));
 
         Either<Exception, String> result = func.apply(-5);
 

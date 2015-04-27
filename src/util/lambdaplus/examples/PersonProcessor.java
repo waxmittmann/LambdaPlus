@@ -1,5 +1,5 @@
 package util.lambdaplus.examples;
-
+/*
 import util.lambdaplus.lambda.experimental.GuardedFunction;
 
 import java.util.Optional;
@@ -42,13 +42,13 @@ public class PersonProcessor {
 
         GuardedFunction<Person, Boolean> guardedFunc
                 = new GuardedFunction((Person p) -> p.getName().equals("Joseph"), stopWhenFalse);
-        guardedFunc = guardedFunc.andThen((Person p) -> p.getAge() < 30);
-        guardedFunc = guardedFunc.andThen((Person p) -> p.getExperience().isAtLeast(Education.HIGH_SCHOOL));
+        guardedFunc = guardedFunc.andThen2((Person p) -> p.getAge() < 30);
+        guardedFunc = guardedFunc.andThen2((Person p) -> p.getExperience().isAtLeast(Education.HIGH_SCHOOL));
 
 //        GuardedFunction<Person, Boolean> guardedFunc =
 //                new GuardedFunction((Person p) -> p.getName() == "Joseph", stopWhenFalse)
-//                        .andThen((Person p) -> p.getAge() < 30)
-//                        .andThen((Person p) -> p.getExperience().isAtLeast(Education.HIGH_SCHOOL));
+//                        .andThen2((Person p) -> p.getAge() < 30)
+//                        .andThen2((Person p) -> p.getExperience().isAtLeast(Education.HIGH_SCHOOL));
 
         return guardedFunc.apply(somePerson).map((Boolean isOK) -> {
             if (isOK) {
@@ -62,4 +62,4 @@ public class PersonProcessor {
     private Employee process(Person person) {
         return null;
     }
-}
+}*/

@@ -7,7 +7,7 @@ import java.util.function.Function;
 public interface EitherFunction<T, L, R> extends Function<T, Either<L, R>> {
     Either<L, R> apply(T t);
 
-    default <V> EitherFunction<V, L, R> compose(EitherFunction<? super V, L, ? extends T> before) {
+    default <V> EitherFunction<V, L, R> compose2(EitherFunction<? super V, L, ? extends T> before) {
         Objects.requireNonNull(before);
         return (V v) -> {
             Either<L, ? extends T> result = before.apply(v);
@@ -21,13 +21,13 @@ public interface EitherFunction<T, L, R> extends Function<T, Either<L, R>> {
 
     /*
         Used to be:
-        default <V> EitherFunction<T, L, ? extends V> andThen(EitherFunction<? super R, L, ? extends V> after) {
+        default <V> EitherFunction<T, L, ? extends V> andThen2(EitherFunction<? super R, L, ? extends V> after) {
         but then it won't compile because it wants Either<L, V> returned, not Either<L, ? extends V> for some reason...
 
-        Used to be <T, L, ? extends V> but then will give error on comppilation because apparently it expects ? extends V
+        Used to be <T, L, ? extends V> but then will give error on compilation because apparently it expects ? extends V
         but is getting a V... not sure what that means.
      */
-    default <V> EitherFunction<T, L, V> andThen(EitherFunction<? super R, L, V> after) {
+    default <V> EitherFunction<T, L, V> andThen2(EitherFunction<R, L, V> after) {
         Objects.requireNonNull(after);
         return (T t) -> {
             Either<L, R> result = apply(t);

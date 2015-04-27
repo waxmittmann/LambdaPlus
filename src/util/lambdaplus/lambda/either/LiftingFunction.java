@@ -4,7 +4,9 @@ import util.lambdaplus.lambda.util.lambda.ThrowingFunction;
 
 import static util.lambdaplus.lambda.util.lambda.LambdaUtils.liftThrowable;
 
-public class LiftingFunction<R1, R2> implements EitherFunction<R1, Exception, R2>{
+public class LiftingFunction<R1, R2> { //implements EitherFunction<R1, Exception, R2>{
+    //implementing EitherFunction here causes issues when trying to call compose2 / andThen2 on EitherFunction?
+//public class LiftingFunction<R1, R2> implements EitherFunction<R1, Exception, R2>{
 
     EitherFunction<R1, Exception, R2>  thisFunc;
 
@@ -16,6 +18,7 @@ public class LiftingFunction<R1, R2> implements EitherFunction<R1, Exception, R2
         this.thisFunc = thisFunc;
     }
 
+//    @Override
     public Either<Exception, R2> apply(R1 r1) {
         return thisFunc.apply(r1);
     }

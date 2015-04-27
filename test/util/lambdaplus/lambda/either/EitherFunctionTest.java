@@ -36,12 +36,12 @@ public class EitherFunctionTest {
         final Exception exception = new Exception("Bad");
         EitherFunction<Integer, Exception, String> combined
                 = EitherFunction.<String, Exception>identity()
-                .compose((Integer nr) -> {
+                .compose2((Integer nr) -> {
                     fail("Should never get here");
                     return new Right<>("_" + nr + "_");
                 })
-                .compose((Integer nr) -> new Left<>(exception)) //Hmm, this one doesn't need params, even though andThen does??
-                .compose((Integer nr) -> new Right<>(nr * 2));
+                .compose2((Integer nr) -> new Left<>(exception)) //Hmm, this one doesn't need params, even though andThen2 does??
+                .compose2((Integer nr) -> new Right<>(nr * 2));
 
         combined.apply(5).consume(
                 e -> assertThat(e, is(exception)),
@@ -53,9 +53,9 @@ public class EitherFunctionTest {
     public void testAndThenCreatesWorkingLeftToRightChain() throws Exception {
         EitherFunction<Integer, Exception, String> combined
                 = EitherFunction.<Integer, Exception>identity()
-                .andThen((Integer nr) -> new Right<>(nr * 2)) // (1) 5 * 2 = 10
-                .andThen((Integer nr) -> new Right<>(nr + 2)) // (2) 10 + 2 = 12
-                .andThen((Integer nr) -> new Right<>("_" + nr + "_")); // (3) _12_
+                .andThen2((Integer nr) -> new Right<>(nr * 2)) // (1) 5 * 2 = 10
+                .andThen2((Integer nr) -> new Right<>(nr + 2)) // (2) 10 + 2 = 12
+                .andThen2((Integer nr) -> new Right<>("_" + nr + "_")); // (3) _12_
 
         combined.apply(5).consume(
             e -> fail("Exception thrown"), r -> assertThat(r, is("_12_"))
@@ -67,9 +67,9 @@ public class EitherFunctionTest {
         final Exception exception = new Exception("Terrible!");
         EitherFunction<Integer, Exception, String> combined
                 = EitherFunction.<Integer, Exception>identity()
-                .andThen((Integer nr) -> new Right<>(nr * 2))
-                .andThen((Integer nr) -> new Left<Exception, Integer>(exception)) // Fail here (needs the type params for some reason)
-                .andThen((Integer nr) -> {
+                .andThen2((Integer nr) -> new Right<>(nr * 2))
+                .andThen2((Integer nr) -> new Left<Exception, Integer>(exception)) // Fail here (needs the type params for some reason)
+                .andThen2((Integer nr) -> {
                     fail("Should never get here");
                     return new Right<>("_" + nr + "_");
                 });

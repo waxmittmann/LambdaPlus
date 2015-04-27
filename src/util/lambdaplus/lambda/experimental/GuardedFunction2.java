@@ -26,9 +26,23 @@ public class GuardedFunction2<S, T> {
     }
 
 
+//    public <U> GuardedFunction2<S, U> andThen2(Function<T, U> next,
+//                                                Function<S, Boolean> nextComposeGuard,
+//                                                Function<U, Boolean> nextAndThenGuard) {
+//        final Function<S, Optional<U>> wrapFunc = (S s) -> {
+//            T result = func.apply(s).get();
+//            if (andThenGuard.apply(result)) {
+//                return Optional.of(next.apply(result));
+//            } else {
+//                return Optional.empty();
+//            }
+//        };
+//        return new GuardedFunction2<>(wrapFunc, nextComposeGuard, nextAndThenGuard);
+//    }
+
     public <U> GuardedFunction2<S, U> andThen(Function<T, U> next,
-                                                Function<S, Boolean> nextComposeGuard,
-                                                Function<U, Boolean> nextAndThenGuard) {
+                                              Function<S, Boolean> nextComposeGuard,
+                                              Function<U, Boolean> nextAndThenGuard) {
         final Function<S, Optional<U>> wrapFunc = (S s) -> {
             T result = func.apply(s).get();
             if (andThenGuard.apply(result)) {
@@ -40,7 +54,7 @@ public class GuardedFunction2<S, T> {
         return new GuardedFunction2<>(wrapFunc, nextComposeGuard, nextAndThenGuard);
     }
 
-//    public <U> GuardedFunction2<U, Optional<T>> compose(Function<U, S> next) {
+//    public <U> GuardedFunction2<U, Optional<T>> compose2(Function<U, S> next) {
 //        return (U u) -> {
 //            S result = next.apply(u);
 //            if (composeGuard.apply(result)) {
@@ -52,7 +66,7 @@ public class GuardedFunction2<S, T> {
 //    }
 
     public Optional<T> apply(S s) {
-        return Optional.of(func.apply(s));
+        return func.apply(s);
     }
 
 }

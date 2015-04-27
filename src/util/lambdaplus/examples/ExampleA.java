@@ -1,5 +1,5 @@
 package util.lambdaplus.examples;
-
+/*
 public class ExampleA {
     private static final Long ROOT_PARENT_ID = 0l;
     private SecureItemRepository aclSecuredItemRepository;
@@ -31,7 +31,8 @@ public class ExampleA {
     public static class Item {
 
         private Object name;
-        private Attribute.Layout id;
+        private Long id;
+        private Long parentId;
 
         public Object getName() {
             return name;
@@ -153,3 +154,4 @@ public class ExampleA {
     private void hierarchyCheck(Long newParentId, Item itemToMove, Item parentCollection) throws ExceptionC{
     }
 }
+*/
