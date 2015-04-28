@@ -1,4 +1,4 @@
-package util.lambdaplus.lambda.util;
+package util.lambdaplus.lambda.testutils;
 
 public class Store <S> {
     S s;

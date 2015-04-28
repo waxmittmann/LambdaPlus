@@ -1,7 +1,7 @@
 package util.lambdaplus.lambda.either;
 
 import org.junit.Test;
-import util.lambdaplus.lambda.util.Store;
+import util.lambdaplus.lambda.testutils.Store;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
