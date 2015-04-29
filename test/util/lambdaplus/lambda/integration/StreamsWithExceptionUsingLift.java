@@ -49,7 +49,7 @@ public class StreamsWithExceptionUsingLift {
     }
 
     /*
-        Example for using map and lifting the whole result to either a list of values or exception; since the
+        Example for using map and lifting the whole result to eitherFunc a list of values or exception; since the
         WrappedException is immediately thrown, will terminate after the first exception.
      */
     @Test

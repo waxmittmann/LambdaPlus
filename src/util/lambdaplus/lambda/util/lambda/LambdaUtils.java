@@ -73,4 +73,19 @@ public class LambdaUtils {
         };
     }
 
+    public static<I, S, T> Either<S, T> either(I i, Function<I, Boolean> isRight, Function<I, S> toLeft,
+                                               Function<I, T> toRight) {
+        return eitherFunc(isRight, toLeft, toRight).apply(i);
+    }
+
+    public static<I, S, T> Function<I, Either<S, T>> eitherFunc(Function<I, Boolean> isRight, Function<I, S> toLeft,
+                                                                Function<I, T> toRight) {
+        return (I in) -> {
+            if (isRight.apply(in)) {
+                return new Right<>(toRight.apply(in));
+            } else {
+                return new Left<>(toLeft.apply(in));
+            }
+        };
+    }
 }
