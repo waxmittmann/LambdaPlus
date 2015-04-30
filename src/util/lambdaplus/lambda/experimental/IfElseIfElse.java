@@ -56,18 +56,35 @@ public class IfElseIfElse {
             ._else((in) -> 4);
          */
 
-        If<Integer> cond =
-                If.<Integer>
-                        _if((in) -> in > 5, (in) -> pr.apply("Inside if_1", 1))
-                        ._elseIf((in) -> in < 2, (in) -> pr.apply("Inside if_2", in),
-                                If.<Integer>_if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
-                                        ._else((in) -> pr.apply("Inside else_2_2", 3))
-                        )
-                        ._else((in) -> pr.apply("Inside if_3", 4));
+        If<Integer> cond1 =
+            If.<Integer>
+                _if((in) -> in > 5, (in) -> pr.apply("Inside if_1", 1))
+                ._elseIf((in) -> in < 2, (in) -> pr.apply("Inside if_2", in),
+                        If.<Integer>_if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
+                                ._else((in) -> pr.apply("Inside else_2_2", 3))
+                )
+                ._else((in) -> pr.apply("Inside if_3", 4));
+
+        If<Integer> cond2 =
+            If.<Integer>
+                _if((in) -> in > 5, (in) -> pr.apply("Inside if_1", 1))
+                ._elseIf(If.<Integer>_if((in)-> in < 2, (in) -> pr.apply("Inside if_2", in))._inside(If.<Integer>
+                    _if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
+                    ._else((in) -> pr.apply("Inside else_2_2", 3))
+                ))
+                ._else((in) -> pr.apply("Inside if_3", 4));
+
 
         for(int i = 0; i < 10; i++) {
 //            System.out.println("For " + i + " ---");
-            System.out.print(cond.applyExtract(i) + ", ");
+//            System.out.print(cond1.applyExtract(i) + ", ");
+            final Integer integer = cond1.applyExtract(i);
+            final Integer integer1 = cond2.applyExtract(i);
+            if (integer != integer1) {
+                System.err.print(integer + " != " + integer1);
+            }
+            System.out.print("(" + integer + ", ");
+            System.out.print(integer1 + "), ");
         }
         System.out.println();
     }
@@ -106,6 +123,19 @@ public class IfElseIfElse {
                     }
                 }
                 return newState;
+            });
+        }
+
+        public If<S> _inside(If<S> insideIf) {
+            return new If<>((S s) ->{
+                Optional<S> nextState = apply(s);
+                if (nextState.isPresent()) {
+                    Optional<S> newState = insideIf.apply(nextState.get());
+                    if (newState.isPresent()) {
+                        nextState = newState;
+                    }
+                }
+                return nextState;
             });
         }
 
