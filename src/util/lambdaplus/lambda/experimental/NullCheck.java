@@ -1,13 +1,5 @@
 package util.lambdaplus.lambda.experimental;
 
-/*
-        Nullcheck(a -> a.getB())
-            .andThen(b -> b.getC())
-            .andThen(c -> c.getD())
-            ...
-            .apply(a);
- */
-
 import java.util.function.Function;
 
 public class NullCheck<S, T> {

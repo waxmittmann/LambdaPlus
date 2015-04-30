@@ -1,15 +1,5 @@
 package util.lambdaplus.lambda.experimental;
 
-/*
-        CondTestFunction<S, T> condTestFunc =
-            first()
-            .andThen()
-            .andThen()
-            .andThen();
-
- */
-
-
 import util.lambdaplus.lambda.either.Either;
 import util.lambdaplus.lambda.either.Left;
 import util.lambdaplus.lambda.either.Right;
@@ -24,55 +14,6 @@ import static util.lambdaplus.lambda.util.lambda.LambdaUtils.eitherFunc;
 
 public class ConditionalMappingFunction<IN, OUT, STATUS> {
     private final Function<IN, Either<STATUS, OUT>> mappingFunc;
-
-//    public CondTestFunction(Function<IN, Optional<STATUS>> mappingFunc) {
-//        this.mappingFunc = (IN in) -> {
-//            Optional<STATUS> result = mappingFunc.apply(in);
-//            if (result.isPresent()) {
-//                return new Left<>(result.get());
-//            } else {
-//                return new Right<>(in);
-//            }
-//        };
-//    }
-
-    /*
-            T t;
-            A thing;
-            if(a(t)) {
-                if(b(t)) {
-                    thing = x1;
-                } else if(c(t)) {
-                    if(d(t)) {
-                        thing = x2;
-                    }
-                } else {
-                    thing = x3;
-                }
-            } else {
-                if(e(t)) {
-                    thing = x4;
-                }
-            }
-
-            a ->
-                b
-                c ->
-                    d
-                else
-            else
-                e
-
-            if(a)
-                .if(b)
-                    .return(x1)
-                .if(c)
-                    .if(d)
-                        .return(x2)
-                .else()
-
-
-     */
 
     public ConditionalMappingFunction(Function<IN, Either<STATUS, OUT>> mappingFunc) {
         this.mappingFunc = mappingFunc;
@@ -122,10 +63,6 @@ public class ConditionalMappingFunction<IN, OUT, STATUS> {
     }
 
     public static void main (String [] args) {
-        /*
-                SimpleTestFunc<Integer, String, Exception>
-         */
-
         {
             ConditionalMappingFunction<Integer, String, Exception> testFunction =
                     first2((Integer in) ->
@@ -178,53 +115,6 @@ public class ConditionalMappingFunction<IN, OUT, STATUS> {
                 );
             }
         }
-
-        //SomeFunc<In, Either<Out, Status>> someFunc;
-        //public Either<Out, Status> SomeFunc(In in, Function<In, Either<Out, Status>> mapper)
-
-//        {
-//            OptionalFunction of = OptionalFunction.first((Integer in) -> {
-//                if (in < 10) {
-//                    return Optional.of(in);
-//                } else {
-//                    return Optional.empty();
-//                }
-//            }).andThen((Integer in) -> {
-//                if (in % 2 == 1) {
-//                    return Optional.of(in);
-//                } else {
-//                    return Optional.empty();
-//                }
-//            });
-//
-//            System.out.println(of.apply(8));
-//            System.out.println(of.apply(9));
-//            System.out.println(of.apply(11));
-//        }
-
-//        {
-//            Function<Integer, Tuple2<Integer, Boolean>> f1
-//                    = (Integer in) -> {
-//                if (in < 10) {
-//                    return new Tuple2<>(in, true);
-//                } else {
-//                    return new Tuple2<>(in, false);
-//                }
-//            };
-//
-//            Function<Tuple2<Integer, Boolean>, Tuple2<Integer, Boolean>> f2
-//                    = (Tuple2<Integer, Boolean> in) -> {
-//                if (in.getSecond() && in.getFirst() % 2 == 1) {
-//                    return new Tuple2<>(in.getFirst(), true);
-//                } else {
-//                    return new Tuple2<>(in.getFirst(), false);
-//                }
-//            };
-//
-//            System.out.println(f1.andThen(f2).apply(9).getSecond());
-//            System.out.println(f1.andThen(f2).apply(10).getSecond());
-//            System.out.println(f1.andThen(f2).apply(8).getSecond());
-//        }
     }
 
     private Either<STATUS, OUT> apply(IN in) {

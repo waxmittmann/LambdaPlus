@@ -1,5 +1,8 @@
 package util.lambdaplus.lambda.experimental.ifelseif;
 
+import util.lambdaplus.functionalif.If;
+import util.lambdaplus.functionalif.IfFactory;
+
 import java.util.function.BiFunction;
 
 public class IfElseIfTest {
@@ -58,8 +61,8 @@ public class IfElseIfTest {
         If<Integer> cond1 =
             ifF._if((in) -> in > 5, (in) -> pr.apply("Inside if_1", 1))
             ._elseIf((in) -> in < 2, (in) -> pr.apply("Inside if_2", in),
-                ifF._if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
-                ._else((in) -> pr.apply("Inside else_2_2", 3))
+                    ifF._if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
+                            ._else((in) -> pr.apply("Inside else_2_2", 3))
             )
             ._else((in) -> pr.apply("Inside if_3", 4));
 
@@ -67,8 +70,8 @@ public class IfElseIfTest {
             ifF.
             _if((in) -> in > 5, (in) -> pr.apply("Inside if_1", 1))
             ._elseIf(ifF._if((in) -> in < 2, (in) -> pr.apply("Inside if_2", in))._inside(ifF.
-                _if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
-                ._else((in) -> pr.apply("Inside else_2_2", 3))
+                            _if((in) -> in % 2 == 0, (in) -> pr.apply("Inside if_2_1", 2))
+                            ._else((in) -> pr.apply("Inside else_2_2", 3))
             ))
             ._else((in) -> pr.apply("Inside if_3", 4));
 

@@ -1,4 +1,4 @@
-package util.lambdaplus.lambda.experimental.ifelseif;
+package util.lambdaplus.functionalif;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -22,5 +22,9 @@ public class IfFactory<S> {
             }
             return newState;
         });
+    }
+
+    public If<S> _else(Function<S, S> stateModifier) {
+        return new If<S>((__) -> true, stateModifier);
     }
 }

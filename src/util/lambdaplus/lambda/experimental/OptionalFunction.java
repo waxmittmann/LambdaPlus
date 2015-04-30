@@ -11,6 +11,7 @@ import java.util.function.Function;
         .andThen(c -> if(blah) return Optional.of(toD(a)) else return Optional.empty())
         .apply(a);
  */
+//Todo: Hmm, is this basically a crappy version of functional if/else? No, because it can change the type...
 public class OptionalFunction<S, T> {
     public static void main (String [] args) {
         OptionalFunction<Integer, String> guardedFunc =
